@@ -1,0 +1,27 @@
+<%- include('../partials/head') %>
+<div class="container">
+    <h1>Your Workouts</h1>
+    <div class="card-container">
+        <% workouts.forEach(workout => { %>
+        <div class="card" style="width: 18rem; margin-bottom: 1rem;">
+            <div class="card-body">
+                <h5 class="card-title"><%= workout.Title || "Untitled Workout" %></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= workout.type %></h6>
+                
+                <p class="card-text"><strong>Duration:</strong> <%= workout.duration %> mins</p>
+                <p class="card-text"><strong>Rating:</strong> <%= workout.rating %>/5</p>
+                <% if (workout.notes) { %>
+                    <p class="card-text"><strong>Notes:</strong> <%= workout.notes %></p>
+                <% } %>
+                <p class="card-text">
+                    <strong>Date:</strong> 
+                    <%= workout.Date ? new Date(workout.Date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : "No Date Provided" %>
+                </p>
+                
+                <a href="/users/<%= user._id%>/workouts/<%= workout._id %>" class="btn btn-primary">View Details</a>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</div>
+<%- include('../partials/footer') %>
