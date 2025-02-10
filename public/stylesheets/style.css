@@ -1,7 +1,8 @@
 body {
-    background-color: pink;
+    background-color: rgb(75, 83, 76);
     margin: 0px;
     text-align: center;
+    color: #ead3d3;
 }
 
 .container {
@@ -9,7 +10,18 @@ body {
     flex-direction: column;
     align-items: center;
 }
+.card-container {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+}
+.card{
+display: flex;
+margin: 5px;
 
+
+}
 form {
     display: flex;
     flex-direction: column;
@@ -19,3 +31,4 @@ form {
 form button {
     margin-top: 10px;
 }
+

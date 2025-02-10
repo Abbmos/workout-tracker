@@ -1,13 +1,33 @@
 <%- include('../partials/head') %>
 <div class="container">
-    <h1>Your Workouts</h1>
+    <h1><%=workout.Title%></h1>
     <div class="card-container">
         <div class="card" style="width: 18rem; margin-bottom: 1rem;">
+            <% if (workout.type==='Strength' ) { %>
+
+                <img src="https://cdn-icons-png.flaticon.com/512/38/38464.png"
+                    class="card-img-top" alt="<%= workout.type %> workout"
+                    >
+                <% }if (workout.type==='Cardio' ) { %>
+                    <img src="https://cdn-icons-png.flaticon.com/512/1/1837.png"
+                    class="card-img-top" alt="<%= workout.type %> workout"
+                    >
+                <% }if (workout.type==='Flexibility' ) { %>
+                    <img src="https://www.shareicon.net/data/512x512/2016/04/06/745502_sports_512x512.png"
+                    class="card-img-top" alt="<%= workout.type %> workout"
+                    >
+                <% }if (workout.type==='Sports' ) { %>
+                    <img src="https://www.shareicon.net/data/512x512/2016/02/19/721553_sport_512x512.png"
+                    class="card-img-top" alt="<%= workout.type %> workout"
+                    >
+                <% } %>
+
+
             <div class="card-body">
                 <h5 class="card-title"><%= workout.Title || "Untitled Workout" %></h5>
                 <h6 class="card-subtitle mb-2 text-muted"><%= workout.type %></h6>
                 
-                <p class="card-text"><strong>Duration:</strong> <%= workout.duration %> mins</p>
+                <p class="card-text"><strong>Duration:</strong> <%= formattedDuration %> </p>
                 <p class="card-text"><strong>Rating:</strong> <%= workout.rating %>/5</p>
                 <% if (workout.notes) { %>
                     <p class="card-text"><strong>Notes:</strong> <%= workout.notes %></p>
