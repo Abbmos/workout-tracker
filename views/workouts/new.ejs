@@ -1,35 +1,55 @@
 <%- include('../partials/head') %>
 
 
-<div class="container">
-    <h1>Log a Workout</h1>
+    <div class="container form-container">
+        <h1>Add a Workout</h1>
+        <div class="form-div">
+            <form action="/users/<%= user._id %>/workouts" method="POST">
+                <div class="all-form">
+                <div class="inside-form">
+                    <label for="title">Workout Title (Optional)</label>
+                    <input type="text" name="Title">
 
-    <form action="/users/<%= user._id %>/workouts" method="POST">
-        <label for="title">Workout Title (Optional)</label>
-        <input type="text" name="Title">
+                    <label for="type">Type</label>
+                    <select name="type" required>
+                        <option value="Strength">Strength</option>
+                        <option value="Cardio">Cardio</option>
+                        <option value="Flexibility">Flexibility</option>
+                        <option value="Sports">Sports</option>
+                    </select>
 
-        <label for="type">Type</label>
-        <select name="type" required>
-            <option value="Strength">Strength</option>
-            <option value="Cardio">Cardio</option>
-            <option value="Flexibility">Flexibility</option>
-            <option value="Sports">Sports</option>
-        </select>
+                    <label for="duration">Duration (minutes)</label>
+                    <input type="number" name="duration" min="0" required>
 
-        <label for="duration">Duration (minutes)</label>
-        <input type="number" name="duration" min="0" required>
 
-        <label for="rating">Personal Rating (0-5)</label>
-        <input type="number" name="rating" min="0" max="5">
+                    <label for="rating">Personal Rating</label>
+                    <div class="star-rating">
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+                    <input type="hidden" name="rating" id="rating-value" required>
+                    <button id="clear-button" type="button">Clear Rating</button>
+                    <label for="date">Date</label>
+                    <input type="date" name="Date" value="<%= new Date().toISOString().split('T')[0] %>" required>
+        
+                  
+                </div>
+                <br>
+                <div class="note-div">
+                    <label for="notes">Notes</label>
+                    <textarea rows ="13" cols="20" name="notes"></textarea>
+                </div>
+            </div>
 
-        <label for="notes">Notes</label>
-        <textarea name="notes"></textarea>
+            <button type="submit">Add Workout</button>
+            </form>
+        </div>
 
-        <label for="date">Date</label>
-        <input type="date" name="date" value="<%= new Date().toISOString().split('T')[0] %>" required>
-        <!-- <input type="date" name="Date"> -->
 
-        <button type="submit">Log Workout</button>
-    </form>
-</div>
-<%- include('../partials/footer') %>
+
+    </div>
+
+    <%- include('../partials/footer') %>

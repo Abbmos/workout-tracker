@@ -1,47 +1,73 @@
 <%- include('../partials/head') %>
 <div class="container">
     <h1><%=workout.Title%></h1>
-    <div class="card-container">
-        <div class="card" style="width: 18rem; margin-bottom: 1rem;">
-            <% if (workout.type==='Strength' ) { %>
-
-                <img src="https://cdn-icons-png.flaticon.com/512/38/38464.png"
-                    class="card-img-top" alt="<%= workout.type %> workout"
-                    >
-                <% }if (workout.type==='Cardio' ) { %>
-                    <img src="https://cdn-icons-png.flaticon.com/512/1/1837.png"
-                    class="card-img-top" alt="<%= workout.type %> workout"
-                    >
-                <% }if (workout.type==='Flexibility' ) { %>
-                    <img src="https://www.shareicon.net/data/512x512/2016/04/06/745502_sports_512x512.png"
-                    class="card-img-top" alt="<%= workout.type %> workout"
-                    >
-                <% }if (workout.type==='Sports' ) { %>
-                    <img src="https://www.shareicon.net/data/512x512/2016/02/19/721553_sport_512x512.png"
-                    class="card-img-top" alt="<%= workout.type %> workout"
-                    >
-                <% } %>
 
 
-            <div class="card-body">
+    <div class="width-increase card-container">
+        <div class="card  show-card" style="margin-bottom: 1rem;">
+          
+
+
+            <div class="card-body show-body-div">
                 <h5 class="card-title"><%= workout.Title || "Untitled Workout" %></h5>
                 <h6 class="card-subtitle mb-2 text-muted"><%= workout.type %></h6>
                 
                 <p class="card-text"><strong>Duration:</strong> <%= formattedDuration %> </p>
-                <p class="card-text"><strong>Rating:</strong> <%= workout.rating %>/5</p>
-                <% if (workout.notes) { %>
-                    <p class="card-text"><strong>Notes:</strong> <%= workout.notes %></p>
-                <% } %>
+
+                <% if (workout.rating===0) { %>
+                <p class="card-text"><strong>Rating:</strong> ☆ ☆ ☆ ☆ ☆</p>
+                <% } if (workout.rating===1) {%>
+                <p class="card-text"><strong>Rating:</strong> ★ ☆ ☆ ☆ ☆</p>
+                <% } if (workout.rating===2) {%>
+                <p class="card-text"><strong>Rating:</strong> ★ ★ ☆ ☆ ☆</p>
+                <% } if (workout.rating===3) {%>
+                <p class="card-text"><strong>Rating:</strong> ★ ★ ★ ☆ ☆</p>
+                <% } if (workout.rating===4) {%>
+                <p class="card-text"><strong>Rating:</strong> ★ ★ ★ ★ ☆</p>
+                <% } if (workout.rating===5) {%>
+                    <p class="card-text"><strong>Rating:</strong> ★ ★ ★ ★ ★</p>
+                    <% } %>
+
+
+               
                 <p class="card-text">
                     <strong>Date:</strong> 
                     <%= workout.Date ? new Date(workout.Date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : "No Date Provided" %>
                 </p>
-                
-                <a href="/users/<%= user._id%>/workouts/<%= workout._id %>" class="btn btn-primary">View Details</a>
-                <a href="/users/<%= user._id%>/workouts/<%= workout._id %>/edit" class="btn btn-warning">Edit</a>
+                <% if (workout.notes) { %>
+                    <div class="show-notes">
+                    <p class="card-text" id=""><strong>Notes:</strong> <%= workout.notes %></p>
+                    </div>
+                <% } %>
+               <div class="show-buttons">
+                <form action="/users/<%= user._id%>/workouts/<%= workout._id %>/edit"  style="display:inline;">
+                <button type="submit" class="btn btn-warning">Edit</button> 
+            </form>
                 <form action="/users/<%= user._id%>/workouts/<%= workout._id %>?_method=DELETE" method="POST" style="display:inline;">
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
+                </div>
+            </div>
+<div class="img-show-div">
+                <% if (workout.type==='Strength' ) { %>
+
+                    <img src="https://cdn-icons-png.flaticon.com/512/38/38464.png"
+                        class="card-img-top" alt="<%= workout.type %> workout"
+                        >
+                    <% }if (workout.type==='Cardio' ) { %>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1/1837.png"
+                        class="card-img-top" alt="<%= workout.type %> workout"
+                        >
+                    <% }if (workout.type==='Flexibility' ) { %>
+                        <img src="https://www.shareicon.net/data/512x512/2016/04/06/745502_sports_512x512.png"
+                        class="card-img-top" alt="<%= workout.type %> workout"
+                        >
+                    <% }if (workout.type==='Sports' ) { %>
+                        <img src="https://www.shareicon.net/data/512x512/2016/02/19/721553_sport_512x512.png"
+                        class="card-img-top" alt="<%= workout.type %> workout"
+                        >
+                    <% } %>
+</div>
             </div>
         </div>
     </div>

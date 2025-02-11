@@ -1,9 +1,31 @@
 <%- include('partials/head') %>
 
+
+<div class="container home-container mt-5">
     <% if (user) { %>
-        <h1>Welcome to the App <%= user.username %>!</h1>
+        <h1>Welcome to the Workout Tracker <%= user.username %>!</h1>
     <% } else { %>
-        <h1>Welcome to the App guest.</h1>
+        <h1>Welcome to the Workout Tracker Guest</h1>
     <% } %>
+
+   
+    <div class="welcome-section mt-4">
+        <p>Track your workouts and stay motivated with our easy-to-use workout tracker!</p>
+        <blockquote class="blockquote">
+            <p class="mb-0">"The only bad workout is the one that didn't happen."</p>
+        </blockquote>
+    </div>
+
+
+    <div class="cta-buttons mt-4">
+        <% if (user) { %>
+            <a href="/users/<%= user._id %>/workouts/new" class="btn btn-primary btn-lg">Add Workout</a>
+            <a href="/users/<%= user._id %>/workouts" class="btn btn-primary btn-lg">View Workouts</a>
+        <% } else { %>
+            <a href="/auth/sign-up" class="btn btn-primary btn-lg">Sign Up</a>
+            <a href="/auth/sign-in" class="btn btn-secondary btn-lg">Sign In</a>
+        <% } %>
+    </div>
+</div>
 
 <%- include('partials/footer') %>

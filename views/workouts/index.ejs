@@ -4,8 +4,8 @@
         <div class="card-container">
 
             <% workouts.forEach(workout=> { %>
-                <div class="card" style="width: 18rem; margin-bottom: 1rem;">
-
+                <div class="card card-container-index" style="width: 18rem; margin-bottom: 1rem;">
+                <div class="card-img-index">
                     <% if (workout.type==='Strength' ) { %>
 
                         <img src="https://cdn-icons-png.flaticon.com/512/38/38464.png"
@@ -24,9 +24,9 @@
                             class="card-img-top" alt="<%= workout.type %> workout"
                             >
                         <% } %>
+                </div>
 
-
-                            <div class="card-body">
+                            <div class="card-body card-body-index">
                                 <h5 class="card-title">
                                     <%= workout.Title || "Untitled Workout" %>
                                 </h5>
@@ -37,14 +37,21 @@
                                 <p class="card-text"><strong>Duration:</strong>
                                     <%= workout.duration %> mins
                                 </p>
-                                <p class="card-text"><strong>Rating:</strong>
-                                    <%= workout.rating %>/5
-                                </p>
-                                <% if (workout.notes) { %>
-                                    <p class="card-text"><strong>Notes:</strong>
-                                        <%= workout.notes %>
-                                    </p>
-                                    <% } %>
+                                <% if (workout.rating===0) { %>
+                                    <p class="card-text"><strong>Rating:</strong> ☆ ☆ ☆ ☆ ☆</p>
+                                    <% } if (workout.rating===1) {%>
+                                    <p class="card-text"><strong>Rating:</strong> ★ ☆ ☆ ☆ ☆</p>
+                                    <% } if (workout.rating===2) {%>
+                                    <p class="card-text"><strong>Rating:</strong> ★ ★ ☆ ☆ ☆</p>
+                                    <% } if (workout.rating===3) {%>
+                                    <p class="card-text"><strong>Rating:</strong> ★ ★ ★ ☆ ☆</p>
+                                    <% } if (workout.rating===4) {%>
+                                    <p class="card-text"><strong>Rating:</strong> ★ ★ ★ ★ ☆</p>
+                                    <% } if (workout.rating===5) {%>
+                                        <p class="card-text"><strong>Rating:</strong> ★ ★ ★ ★ ★</p>
+                                        <% } %> 
+                                
+                         
                                         <p class="card-text">
                                             <strong>Date:</strong>
                                             <%= workout.Date ? new Date(workout.Date).toLocaleDateString('en-US', {
