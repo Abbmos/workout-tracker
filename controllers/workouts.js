@@ -47,7 +47,6 @@ const createWorkout = async (req, res) => {
 
         currentUser.workouts.push(req.body)
         await currentUser.save()
-        console.log(req.body);
         res.redirect(`/users/${currentUser._id}/workouts`)
 
 
@@ -91,7 +90,7 @@ const edit = async (req, res) => {
         const currentWorkout = currentUser.workouts.id(req.params.workoutId);
         res.render('workouts/edit.ejs', {
 
-            title: `${currentWorkout.Title}`,
+            title: `Editing ${currentWorkout.Title}`,
             workout: currentWorkout,
         })
     } catch (err) {

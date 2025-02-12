@@ -1,10 +1,8 @@
 <%- include('../partials/head') %>
     <div class="container">
-        <h1>Your Workouts</h1>
+        <h1><%= currentUser.username %>'s Workouts</h1>
         <div class="card-container">
-<% if(workouts.length===0) {  %>
-<h1> You Have No Workouts Added! </h1>
-    <%  }  %>
+
             <% workouts.forEach(workout=> { %>
                 <div class="card card-container-index" style="width: 18rem; margin-bottom: 1rem;">
                 <div class="card-img-index">
@@ -61,7 +59,7 @@
                                                 %>
                                         </p>
 
-                                        <a href="/users/<%= user._id%>/workouts/<%= workout._id %>"
+                                        <a href="/community/<%= currentUser._id%>/<%= workout._id %>"
                                             class="btn btn-primary">View Details</a>
                             </div>
                 </div>

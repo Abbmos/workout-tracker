@@ -1,7 +1,7 @@
 const stars = document.querySelectorAll('.star');
 const ratingInput = document.querySelector('#rating-value');
 const clearBtn = document.querySelector('#clear-button')
-
+if (ratingInput){
 if (ratingInput.value == '') {
 	ratingInput.value = 0;
 }
@@ -43,4 +43,4 @@ clearBtn.addEventListener('click', () => {
 const existingRating = ratingInput.value;
 if (existingRating > 0) {
 	updateStars(existingRating);
-}
+}}

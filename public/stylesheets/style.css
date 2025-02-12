@@ -227,3 +227,18 @@ blockquote {
     justify-content: center;
     background-color:#7c660e;
 }
+@media (max-width: 750px) {
+    .form-container {
+
+    
+        width: 50%; 
+        margin: auto;
+        margin-top: 60px;
+        padding: 20px;
+        transform: scale(1.2);
+        transform-origin: center;
+    background-color: rgb(75, 83, 76);
+    border-radius: 10%;
+    max-width: 40%;
+    }
+  }

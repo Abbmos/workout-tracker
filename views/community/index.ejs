@@ -1,0 +1,21 @@
+<%- include('../partials/head') %>
+    <div class="container">
+        <h1>Our Community</h1>
+        <div class="card-container">
+
+            <% allUsers.forEach(user=> { %>
+                <div class="card card-container-index" style="width: 18rem; margin-bottom: 1rem;">
+                            <div class="card-body card-body-index">
+                                <h5 class="card-title">
+                                    <%= user.username || "Untitled Workout" %>
+                                </h5>
+                                <h6 class="card-subtitle mb-2 text-muted">
+                                   # of Workouts: <%= user.workouts.length %>
+                                </h6>
+                                <a href="/community/<%= user._id %>" class="btn btn-warning"> View Workouts </a>
+                            </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>

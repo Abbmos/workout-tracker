@@ -2,7 +2,7 @@
 
 
 <div class="container form-container">
-    <h1>Edit a Workout</h1>
+    <h1>Editing <%= workout.Title %></h1>
     <div class="form-div">
     <form action="/users/<%= user._id %>/workouts/<%= workout._id %>?_method=PUT" method="POST">
 
@@ -47,6 +47,8 @@
     </div>
 
         <button type="submit">Edit Workout</button>
+        <br>
+        <a href="/users/<%= user._id%>/workouts" class="btn btn-warning">Go Back To Your Workouts</a>
     </form>
 </div>
 <%- include('../partials/footer') %>

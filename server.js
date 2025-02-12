@@ -45,6 +45,7 @@ app.use(passUserToView)
 const pagesCtrl = require('./controllers/pages')
 const authCtrl = require('./controllers/auth')
 const workoutCtrl = require('./controllers/workouts')
+const communityCtrl = require('./controllers/community')
 // ROUTE HANDLERS
 app.get('/', pagesCtrl.home)
 app.get('/auth/sign-up', authCtrl.signUp)
@@ -63,6 +64,11 @@ app.get('/users/:userId/workouts/:workoutId',workoutCtrl.show)
 app.get('/users/:userId/workouts/:workoutId/edit',workoutCtrl.edit)
 app.put('/users/:userId/workouts/:workoutId', workoutCtrl.update)
 app.delete('/users/:userId/workouts/:workoutId',workoutCtrl.deleteWorkout)
+
+//communtiy routes
+app.get('/community', communityCtrl.index)
+app.get('/community/:userId', communityCtrl.show)
+app.get('/community/:userId/:workoutId',communityCtrl.details)
 
 // app.delete('users/:userId/workouts/:workoutId',workoutCtrl.deleteWorkout)
 
