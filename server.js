@@ -1,6 +1,4 @@
 require('dotenv').config()
-// const dotenv = require('dotenv')
-// dotenv.config()
 const express = require('express')
 const app = express()
 const session = require('express-session')
@@ -70,7 +68,7 @@ app.get('/community', communityCtrl.index)
 app.get('/community/:userId', communityCtrl.show)
 app.get('/community/:userId/:workoutId',communityCtrl.details)
 
-// app.delete('users/:userId/workouts/:workoutId',workoutCtrl.deleteWorkout)
+
 
 
 app.listen(port, () => {
